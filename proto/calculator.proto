@@ -1,0 +1,21 @@
+syntax="proto3";
+
+option go_package = "./proto";
+
+package calcualator;
+
+service CalcualatorService {
+    rpc Add (AddRequest) returns (AddResponse) {}
+    rpc AddClientStream(stream AddRequest) returns (AddResponse) {}
+    rpc AddServerStream(AddRequest) returns (stream AddResponse) {}
+    rpc AddBidirectionalStream(stream AddRequest) returns (stream AddResponse) {}
+}
+
+message AddRequest {
+    int64 a = 1;
+    int64 b = 2;
+}
+
+message AddResponse {
+    int64 result = 1;
+}
